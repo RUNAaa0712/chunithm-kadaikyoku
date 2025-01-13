@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>テキストテーブル画像生成</title>
+  <link rel="stylesheet" href="text_to_table_image.css">
+</head>
+<body>
+  <div class="container">
+    <h1>テキストテーブル画像生成</h1>
+    <p>タブ区切り形式のテキストを入力してください。</p>
+    <textarea id="tsv-input" placeholder="例: A\tB\tC\n1\t2\t3\n4\t5\t6"></textarea>
+    
+    <button id="convert-button">画像に変換</button>
+    <div id="image-result"></div>
+  </div>
+  <script src="text_to_table_image.js"></script>
+</body>
+</html>
