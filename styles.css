@@ -1,0 +1,152 @@
+/* ベーススタイル */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 見出し */
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 30px;
+  }
+  
+  /* 説明テキスト */
+  p {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* ドロップダウンコンテナ */
+  .dropdown-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: calc(50% - 10px);
+  }
+  
+  .dropdown label {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  select {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: border-color 0.3s ease;
+  }
+  
+  select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* ボタン */
+  button {
+    display: block;
+    width: calc(50% - 10px);
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  button:active {
+    transform: scale(1);
+  }
+  
+  /* 結果リスト */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+  }
+  
+  ul li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    background: #f9f9f9;
+    color: #333;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  ul li:hover {
+    background: #007bff;
+    color: white;
+  }
+  
+  /* メディアクエリ（モバイル向け） */
+  @media (max-width: 600px) {
+    .dropdown {
+      width: 100%; /* ドロップダウンをフル幅に */
+    }
+  
+    button {
+      width: 100%; /* ボタンをフル幅に */
+    }
+  
+    h1, h2 {
+      font-size: 1.5rem; /* ヘッダーサイズを小さく調整 */
+    }
+  
+    p {
+      font-size: 0.9rem; /* 説明文を少し小さく */
+    }
+  
+    select {
+      font-size: 1rem; /* モバイルで操作しやすいサイズ */
+    }
+  
+    ul li {
+      font-size: 1rem; /* リスト項目を見やすく */
+    }
+  }
+  
