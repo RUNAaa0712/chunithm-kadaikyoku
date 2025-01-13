@@ -49,7 +49,6 @@ function setupDropdownListeners() {
 
 // 曲を生成する関数
 function generateSongs() {
-  // 各リストボックスの値を取得
   const ranges = [
     document.getElementById('range-14').value,
     document.getElementById('range-14-plus').value,
@@ -57,9 +56,8 @@ function generateSongs() {
     document.getElementById('range-15-plus').value
   ];
 
-  // 選択された値だけを数値としてフィルタリング
   const selectedConstants = ranges
-    .filter(value => value !== '') // 空の値（ダミー）は除外
+    .filter(value => value !== '')
     .map(parseFloat);
 
   if (selectedConstants.length === 0) {
@@ -67,20 +65,20 @@ function generateSongs() {
     return;
   }
 
-  const selectedConstant = selectedConstants[0]; // 選択された定数
-  const higherConstant = selectedConstant + 0.1; // 選択された定数+0.1
+  const selectedConstant = selectedConstants[0];
+  const higherConstant = selectedConstant + 0.1;
 
-  // 選択されたロジックを取得
+  // ロジックの選択
   const logic = document.getElementById('logic-select').value;
 
   let selectedSongs = [];
   if (logic === 'default') {
     // 定数から2曲、+0.1定数から1曲
-    const matchingSongs = songData.filter(song => song.constant === selectedConstant);
-    const higherSongs = songData.filter(song => song.constant === higherConstant);
+    const matchingSongs = songData.filter(song => song.constant.toFixed(1) === selectedConstant.toFixed(1));
+    const higherSongs = songData.filter(song => song.constant.toFixed(1) === higherConstant.toFixed(1));
 
     if (matchingSongs.length < 2 || higherSongs.length < 1) {
-      alert('条件に一致する曲が十分にありません。');
+      alert(`条件に一致する曲が不足しています。\n選択された定数: ${selectedConstant.toFixed(1)}, +0.1定数: ${higherConstant.toFixed(1)}`);
       return;
     }
 
@@ -90,29 +88,29 @@ function generateSongs() {
     ];
   } else if (logic === 'same-constant') {
     // 同じ定数から3曲
-    const matchingSongs = songData.filter(song => song.constant === selectedConstant);
+    const matchingSongs = songData.filter(song => song.constant.toFixed(1) === selectedConstant.toFixed(1));
 
     if (matchingSongs.length < 3) {
-      alert('条件に一致する曲が十分にありません。');
+      alert(`条件に一致する曲が不足しています。\n選択された定数: ${selectedConstant.toFixed(1)}\n現在の曲数: ${matchingSongs.length}`);
       return;
     }
 
     selectedSongs = getRandomUniqueItems(matchingSongs, 3);
   }
 
-  // 結果を表示
   const resultList = document.getElementById('result');
-  resultList.innerHTML = ''; // 結果をクリア
+  resultList.innerHTML = '';
 
   selectedSongs.forEach(song => {
     const li = document.createElement('li');
-    li.textContent = `${song.title} (${song.level}) - 定数: ${song.constant.toFixed(1)}`; // 小数点1桁まで表示
+    li.textContent = `${song.title} (${song.level}) - 定数: ${song.constant.toFixed(1)}`;
     resultList.appendChild(li);
   });
 
-  // コピー用テキストを生成
   copyText = selectedSongs.map(song => `[${song.level}] ${song.title}`).join('\n');
 }
+
+
 
 // ランダムに重複なく曲を選ぶヘルパー関数
 function getRandomUniqueItems(array, count) {
