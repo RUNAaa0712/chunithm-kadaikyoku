@@ -107,7 +107,7 @@ function generateSongs() {
     resultList.appendChild(li);
   });
 
-  copyText = selectedSongs.map(song => `[${song.level}] ${song.title}`).join('\n');
+  copyText = selectedSongs.map(song => `【${song.level}】${song.title}`).join('\n');
 }
 
 
