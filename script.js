@@ -106,7 +106,7 @@ function generateSongs() {
 
   selectedSongs.forEach(song => {
     const li = document.createElement('li');
-    li.textContent = `${song.title} (${song.level}) - 定数: ${song.constant}`;
+    li.textContent = `${song.title} (${song.level}) - 定数: ${song.constant.toFixed(1)}`; // 小数点1桁まで表示
     resultList.appendChild(li);
   });
 
